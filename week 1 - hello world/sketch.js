@@ -4,13 +4,6 @@ function setup() {
 
 function draw() {
   background("white");
-fill("gray");
-noStroke(0);
-  rect(100, 60, 200, 500);
-  rect(150, 500, 100, 200);
-
-  fill("red");
-  noStroke(0);
-  circle(200, 200, 100);
-  
+textSize(24);
+text("1. sky hoek")
 }
