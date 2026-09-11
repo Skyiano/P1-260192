@@ -81,7 +81,7 @@ text("6.", 550, 50);
 stroke("black");
 strokeWeight(8);
 fill("white");
-rect(560, 100, 250, 250);
+rect(560, 100, 250, 600,);
 noStroke(0);
 fill("black");
 circle(680, 220, 50);
