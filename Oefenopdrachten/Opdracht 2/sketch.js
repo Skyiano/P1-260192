@@ -7,13 +7,19 @@ let greeting = "hallo wereld";{
 let a = 20;{
 let b = 10;
 //geeft een waarde aan a en b
-let optellen = a + b;
+}
+
+
+let optellen = a + b;{
 let aftrekken = a - b;
 let multiply = a * b;
 let delen = a / b;
 //maakt sommen met waarde a en b
-let y = 80;
 }
+
+let y = 0;
+y = 80;
+ 
 
 function setup() {
   createCanvas(400, 400);
