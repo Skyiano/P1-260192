@@ -28,11 +28,11 @@ function draw() {
   text(x, 20, 20);
   text(greeting, 20, 60);
  let y = 80;
- text(optellen, 20, y);
+ text("optellen: " + optellen, 20, y);
  y += 20;
- text(aftrekken, 20, y);
+ text("aftrekken: " + aftrekken, 20, y);
  y += 20;
- text(multiply, 20, y);
+ text("multiply: " + multiply, 20, y);
  y += 20;
- text(delen, 20, y);
+ text("delen: " + delen, 20, y);
 }
