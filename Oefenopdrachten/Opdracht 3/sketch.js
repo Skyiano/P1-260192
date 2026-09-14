@@ -4,7 +4,7 @@ function setup() {
 function draw() {
   background(220);
 }
-score = 55;
+let score = 55;
 if (score >= 90){
   console.log("uitstekend");
 }
