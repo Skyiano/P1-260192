@@ -8,15 +8,11 @@ let a = 20;
 let b = 10;
 //geeft een waarde aan a en b
 
-
-
 let optellen = a + b;
 let aftrekken = a - b;
 let multiply = a * b;
 let delen = a / b;
 //maakt sommen met waarde a en b
-
- 
 
 function setup() {
   createCanvas(400, 400);
@@ -25,6 +21,8 @@ function setup() {
 function draw() {
   background(220);
   textSize(24);
+
+  //schrijft het op
   text(x, 20, 20);
   text(greeting, 20, 60);
  let y = 80;
