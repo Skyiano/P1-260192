@@ -1,5 +1,19 @@
+let x = 200;
+let zonX = 0;
+let light = 0;
+
 function setup() {
   createCanvas(800, 600);
+}
+
+function keyPressed(){
+  if (keyCode === ENTER) {
+    light = light + 1;
+
+    if (light > 2){
+      light = 0;
+    }
+  }
 }
 
 function draw() {
@@ -13,22 +27,32 @@ function draw() {
   triangle(100, 500, 400, 500, 250, 300);
   triangle(500, 500, 900, 500, 700, 400);
 
-  //wolk
-  noStroke(0);
-  fill("#f5f5f5")
-  circle(190, 140, 50);
-  circle(220, 130, 50);
-  circle(250, 140, 50);
-  fill("white");
-  circle(190, 150, 50);
-  circle(220, 140, 50);
-  circle(250, 150, 50);
-
-//zon
+  //zon
 noStroke(0);
 fill("yellow");
-  circle(400, 50, 75);
+  ellipse(zonX, 50, 80, 80);
 
+  // beweegt zon van links naar rechts
+  zonX += 1;
+
+  // plaats zon terug naar links na verdwijnen vna rechts
+  if (zonX > 840){
+    zonX = -40;
+  }
+
+  //wolk
+  noStroke(0);
+  fill("white");
+  ellipse(x, 100, 60, 40);
+  circle(x + 30, 100, 70, 50);
+  circle(x + 60, 100, 60, 40);
+// wolk beweegt recht naar links
+  x -= 2;
+// wolk weer rechts plaatsen wanneer links uit beeld
+  if (x < -60){
+    x = 800;
+  }
+  
   //grass
   noStroke(0);
   fill("#32cd32");
@@ -81,13 +105,30 @@ fill("yellow");
   line(660, 450, 660, 500);
   fill("#353839");
   rect(640, 350, 40, 100);
-  noStroke(0);
-  fill("red");
+
+//rood licht
+  if (light == 0){
+fill("red");
+  } else{
+    fill(100);
+  }
   circle(660, 370, 25);
-  fill("yellow");
+
+// geel light
+if (light == 2){
+fill("yellow");
+} else {
+  fill(100);
+}
   circle(660, 400, 25);
-  fill("green");
-  circle(660, 430, 25);
+
+// groen light
+if (light == 1){
+fill("green");
+} else{
+  fill(100);
+}
+   circle(660, 430, 25);
 
   //auto
   noStroke(0);
@@ -99,3 +140,4 @@ fill("yellow");
   rect(200, 505, 75, 60)
   
 }
+
