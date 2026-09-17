@@ -2,6 +2,12 @@ let x = 200;
 let zonX = 0;
 let light = 0;
 
+let auto = 80;
+let g = 140
+let b = 240
+
+let slow = 200
+
 function setup() {
   createCanvas(800, 600);
 }
@@ -79,19 +85,16 @@ fill("yellow");
   rect(150, 400, 20, 100);
   rect(250, 400, 20, 100);
   rect(460, 400, 20, 100);
-  rect(300, 500, 20, 100);
   fill("#195905");
   circle(20, 400, 50);
   circle(150, 400, 50);
   circle(250, 400, 50);
   circle(460, 400, 50);
-  circle(300, 500, 50);
   fill("#006400");
   circle(30, 400, 50);
   circle(160, 400, 50);
   circle(260, 400, 50);
   circle(470, 400, 50);
-  circle(310, 500, 50);
   fill("#228b22");
   circle(40, 400, 50);
   circle(170, 400, 50);
@@ -132,12 +135,55 @@ fill("green");
 
   //auto
   noStroke(0);
-  fill("#343434");
-  circle(150, 570, 35);
-  circle(250, 570, 35);
   fill("red");
-  rect(100, 465, 130, 100);
-  rect(200, 505, 75, 60)
-  
-}
+  rect(auto, 465, 130, 100);
+  rect(auto, 505, 200, 60);
+  fill("#343434");
+  circle(g, 570, 50);
+  circle(b, 570, 50);
 
+  //boom
+  noStroke(0);
+  fill("#664c28");
+  rect(300, 500, 20, 100);
+  fill("#195905");
+  circle(300, 500, 50);
+  fill("#006400");
+  circle(310, 500, 50);
+  fill("#228b22");
+  circle(320, 500, 50);
+
+
+
+  if (auto > 840){
+    auto = -200;
+  }
+
+  
+
+  if (g > 840){
+    g = -200;
+  }
+
+  
+
+  if (b > 840){
+    b = -200;
+  }
+
+  if (light == 1){
+      auto += 2;
+      g += 2;
+    b += 2;
+  }
+
+  if (light == 2 && auto >= 200){
+    auto += 1.5;
+    g +=1.5;
+    b += 1.5;
+}else {
+  auto += 3;
+  g += 3;
+  b += 3;
+}
+}
