@@ -154,34 +154,41 @@ fill("green");
   circle(320, 500, 50);
 
 
-
+// auto beweging
   if (auto > 840){
     auto = -200;
-  }
-
-  
+  } 
 
   if (g > 840){
     g = -200;
   }
 
-  
-
   if (b > 840){
     b = -200;
   }
 
+//auto reageert of stoplicht
   if (light == 1){
-      auto += 2;
-      g += 2;
-    b += 2;
+      auto += 3;
+      g += 3;
+    b += 3;
   }
-
+// vertraagd bij geel licht
   if (light == 2 && auto >= 200){
     auto += 1.5;
     g +=1.5;
     b += 1.5;
-}else {
+}else if (light == 2 && auto != 200){
+  auto += 3;
+  g += 3;
+  b += 3;
+}
+// stopt bij rood light na 400  of hoger
+if (auto >= 400 && light == 0){
+  auto += 0;
+  g += 0;
+  b +=0;
+}else if (light == 0 && auto != 400){
   auto += 3;
   g += 3;
   b += 3;
