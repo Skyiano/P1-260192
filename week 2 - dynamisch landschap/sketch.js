@@ -167,7 +167,7 @@ fill("green");
     b = -200;
   }
 
-//auto reageert of stoplicht
+//auto reageert op stoplicht
   if (light == 1){
       auto += 3;
       g += 3;
