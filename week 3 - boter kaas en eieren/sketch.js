@@ -9,6 +9,10 @@ function setup() {
 let player = 1;
 
 function mousePressed(){
+
+  if (spelklaar == true){
+    return;
+  }
   // klik functie traceert waar muis is en of vakje is aan
   let kolom = floor((mouseX - 150) / 150);
 
@@ -21,7 +25,18 @@ function mousePressed(){
 if (nummer >= 0 && nummer < 9 && vak[nummer] == 0){
   vak[nummer] = player;
 
-  //veranderd waarde van speler na beurt
+  // zorgt dat spel een winnaar heeft
+  let winnaar = controleerWinnaar();
+
+  if (winnaar == 1){
+  spelklaar = true;
+}
+
+if (winnaar == 2){
+  spelklaar = true;
+}
+
+// geeft spelers een beurt rood eerst dan blauw
 if( player == 1){
     player = 2;
     console.log("player 2 beurt");
@@ -36,6 +51,7 @@ if( player == 1){
 
   console.log("klik");
 }
+
 }
 
 function controleerWinnaar(){
@@ -125,7 +141,6 @@ return 0;
 }
 
 function draw() {
-  background(220);
 
 // laat zien wie aan beurt is
 if(player == 1){
@@ -133,6 +148,15 @@ if(player == 1){
 }else if (player == 2){
   background("blue");
 }
+
+// laat zie winnaar
+ if (controleerWinnaar() == 1){
+    background("red");
+  }
+  
+  if (controleerWinnaar() == 2){
+    background("blue");
+  }
 
   //maak speelveld
   fill("black");
@@ -234,5 +258,20 @@ fill("blue");
 fill("gray")
 }
   square(450, 450, 120, 10);
+
+  //laat ook winnaar zien
+if (controleerWinnaar() == 1){
+    fill("red");
+    textSize(32);
+    textAlign(CENTER);
+    text("speler 1 wint", 350, 600);
+  }
+  
+  if (controleerWinnaar() == 2){
+    fill("blue");
+    textSize(32);
+    textAlign(CENTER);
+    text("speler 2 wint", 350, 600);
+  }
 
 }
