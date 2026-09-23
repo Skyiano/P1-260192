@@ -2,14 +2,26 @@ let vak = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 let spelklaar = false; 
 
+let winnaar = 0;
+
 function setup() {
-  createCanvas(700, 700);
+  createCanvas(720, 720);
 }
 
 let player = 1;
 
 function mousePressed(){
 
+   // als muis klikt reset button reset veld en speler
+if(mouseX >= 275 && mouseX <= 425 && mouseY >= 650 && mouseY <= 700){
+    vak = [0,0,0,0,0,0,0,0,0];
+
+    player = 1;
+    spelklaar = false;
+    winnaar = 0;
+    console.log("reset");
+  }
+// als spel klaar is verklaar winnaar
   if (spelklaar == true){
     return;
   }
@@ -19,6 +31,12 @@ function mousePressed(){
   let rij = floor((mouseY - 150) / 150);
 
   let nummer = rij * 3 + kolom;
+
+// als gelijkspel is niemand wint
+  if(controleerGelijkspel() == true){
+    winnaar = 3
+    spelklaar = true
+  }
 
   // muis positie blijven in rect
   if(mouseX > 150 && mouseX < 150 + 450 && mouseY > 150 && mouseY < 150 + 450 ){
@@ -52,6 +70,16 @@ if( player == 1){
   console.log("klik");
 }
 
+}
+function controleerGelijkspel(){
+//loopt als er nog grijze vakjes zijn
+  for (let i = 0; i < 9; i++) {
+    if (vak[i] == 0){
+      return false;
+    }
+    
+  }
+  return true;
 }
 
 function controleerWinnaar(){
@@ -156,6 +184,10 @@ if(player == 1){
   
   if (controleerWinnaar() == 2){
     background("blue");
+  }
+
+  if(winnaar == 3){
+    background("gray");
   }
 
   //maak speelveld
@@ -264,14 +296,28 @@ if (controleerWinnaar() == 1){
     fill("red");
     textSize(32);
     textAlign(CENTER);
-    text("speler 1 wint", 350, 600);
+    text("player 1 has vanquished the enemy", 360, 600);
   }
   
   if (controleerWinnaar() == 2){
     fill("blue");
     textSize(32);
     textAlign(CENTER);
-    text("speler 2 wint", 350, 600);
+    text("player 2 has vanquished the enemy ", 360, 600);
   }
+
+  if(winnaar == 3){
+    fill("green");
+    textSize(32);
+    textAlign(CENTER);
+    text("both sides got nuked", 350, 600);
+  }
+// reset knop
+  fill("white");
+    rect(275, 650, 150, 50);
+
+    fill("black");
+    textSize(20);
+    text("reset", 350, 680);
 
 }
