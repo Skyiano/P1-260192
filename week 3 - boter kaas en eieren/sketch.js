@@ -159,7 +159,7 @@ if (vak[6] == 2 && vak[7] == vak[6] && vak[8] == vak[6]){
 }
 
 // als speler 2 rij 3 verticaal heeft
-if (vak[2] == 2 && vak[5] == vak[1] && vak[8] == vak[2]){
+if (vak[2] == 2 && vak[5] == vak[2] && vak[8] == vak[2]){
   return 2;
 }
 
