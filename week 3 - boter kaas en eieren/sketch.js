@@ -72,7 +72,7 @@ if( player == 1){
 
 }
 function controleerGelijkspel(){
-//loopt als er nog grijze vakjes zijn
+//als er nog vakjes open staan da beindigt het spel nog niet
   for (let i = 0; i < 9; i++) {
     if (vak[i] == 0){
       return false;
@@ -296,14 +296,14 @@ if (controleerWinnaar() == 1){
     fill("red");
     textSize(32);
     textAlign(CENTER);
-    text("player 1 has vanquished the enemy", 360, 600);
+    text("player 1 has won this round", 360, 600);
   }
   
   if (controleerWinnaar() == 2){
     fill("blue");
     textSize(32);
     textAlign(CENTER);
-    text("player 2 has vanquished the enemy ", 360, 600);
+    text("player 2 has won this round", 360, 600);
   }
 
   if(winnaar == 3){
