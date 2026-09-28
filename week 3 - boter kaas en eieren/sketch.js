@@ -177,7 +177,7 @@ if(player == 1){
   background("blue");
 }
 
-// laat zie winnaar
+// laat zien winnaar
  if (controleerWinnaar() == 1){
     background("red");
   }
