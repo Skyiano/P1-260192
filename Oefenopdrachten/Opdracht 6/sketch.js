@@ -5,8 +5,10 @@ let tekst = [1., 2., 3., 4., 5., 6., 7., 8., 9.];
 
 let kleuren = ['red', 'green', 'blue', 'purple', 'yellow'];
 
-let nummer = [400., 240., 10., 490., 30., 60., 244., 500., 301., 300.];
+let nummer = ['400', '240', '10', '490', '30', '60', '244', '500', '301', '300'];
 let nummerafstandY = [265, 280, 295, 310, 325];
+let nummerarray1 = [3,55,93,20,102,6];
+let nummerarray2 = [14,22,80,5];
 
 let kleurafstandX1 = [30];
 let kleurafstandY1 = [15, 30, 45, 60, 75];
@@ -16,6 +18,8 @@ let kleurafstandY3 = [205, 220, 235];
 
 function setup() {
   createCanvas(380, 350);
+
+  
 }
 
 //task numbers
@@ -58,10 +62,5 @@ function draw() {
     
   }
 
-  for (let i = 0; i < 5; i++) {
-    let nummer = [400., 240., 10., 490., 30., 60., 244., 500., 301., 300.];
-    
-    
-  }
 
 }

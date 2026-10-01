@@ -1,5 +1,5 @@
 
-// variables for drops array spawntime last drop spawned and if started
+// variables for drops array spawn time last drop spawned and if started
 let drops = [];
 let spawnDelay = 1500;
 let lastSpawn = 0;
@@ -13,6 +13,72 @@ function setup() {
 }
 
 function draw() {
-  
+  // make the ripples start
+  if (started){
+    if(millis() - lastSpawn >= spawnDelay){
+      // when enter pressed pushes drop to array 
+      drops.push({
+        x: random(width),
+        y: random(height),
+        color: color(random(255), random(255), random(255)),
+        size: 0,
+        speed: 2
+      });
+
+      lastSpawn = millis();
+    }
+  }
+// this is what happens when circle covers whole canvas
+for (let i = 0; i < drops.length; i++) {
+
+  //variables for distance of circle and corner
+  let d1 = dist(drops[i].x, drops[i].y,0,0);
+  let d2 = dist(drops[i].x, drops[i].y,width,0);
+  let d3 = dist(drops[i].x, drops[i].y,0,height);
+  let d4 = dist(drops[i].x, drops[i].y,width,height);
+
+  let farthest = max(d1,d2,d3,d4);
+  // if circle is outside the corners of canvas circle no more grow
+  if(drops[i].size < farthest * 2){
+    drops[i].size += drops[i].speed;
+  }
+  fill(drops[i].color);
+  circle(drops[i].x, drops[i].y, drops[i].size);
+
+}
+// if circles fully overlap each other circle stop growing and make new one
+for(let i = 0; i < drops.length; i++){
+  for(let j = i + 1; j < drops.length; j++){
+// checks if circles overlap fully
+let distance = dist(drops[i].x, drops[i].y, drops[j].x, drops[j].y);
+
+let oldRadius = drops[i].size / 2;
+let newRadius = drops[j].size / 2;
+
+if (distance + oldRadius <= newRadius){
+
+  drops.splice(i, 1);
+
+  break;
+}
+}
 }
 
+
+}
+
+
+
+// place function for keyPressed enter so it can start
+function keyPressed() {
+  if(keyCode === ENTER){
+    started = !started;
+  
+    if (!started){
+      drops = [];
+      background(220);
+
+    }
+  }
+  
+}
