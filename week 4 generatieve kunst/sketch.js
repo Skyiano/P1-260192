@@ -32,7 +32,7 @@ function draw() {
 // this is what happens when circle covers whole canvas
 for (let i = 0; i < drops.length; i++) {
 
-  //variables for distance of circle and corner
+  //variables for distance between the circles and canvas corners
   let d1 = dist(drops[i].x, drops[i].y,0,0);
   let d2 = dist(drops[i].x, drops[i].y,width,0);
   let d3 = dist(drops[i].x, drops[i].y,0,height);
@@ -52,7 +52,7 @@ for(let i = 0; i < drops.length; i++){
   for(let j = i + 1; j < drops.length; j++){
 // checks if circles overlap fully
 let distance = dist(drops[i].x, drops[i].y, drops[j].x, drops[j].y);
-// circle radius if it's half the size of circle divide by 2
+// circle radius is half size of the circle divide by 2
 let oldRadius = drops[i].size / 2;
 let newRadius = drops[j].size / 2;
 // if the distance plus the old radius of circle is 
@@ -85,3 +85,8 @@ function keyPressed() {
   }
   
 }
+
+
+// newtons first law an object in motion stays in motion unless acted upon by an outside force
+// newtons second law the acceleration of an object is dependent upon two variables the net force acting upon the object and the mass of the object
+// newtons third law every action has an equal and opposite reaction
