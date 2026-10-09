@@ -142,7 +142,7 @@ image(startBackground, 0, 0, width, height);
     drawResultScreen();
   }
 }
-
+// function for startScreen shows texts and background
 function drawStartScreen(){
 textAlign(CENTER,CENTER);
 fill("white");
@@ -153,7 +153,7 @@ textSize(20);
 text("press ENTER to start", width/ 2, 300)
 
 }
-
+// function for questions to draw the questions
 function drawQuizScreen(){
 let q = questionShuffle[currentQuestion];
 
@@ -168,12 +168,12 @@ text(q.question, width/ 2, 90);
 let questionImage = questionImages[q.image];
 
 if (questionImage){
-  image(questionImage, 250, 120, 300, 180);
+  image(questionImage, 175, 90, 450, 270);
 }
 
 
 }
-
+// functions to show score at the final result
 function drawResultScreen(){
   textAlign(CENTER, CENTER);
   textSize(40);
@@ -186,17 +186,17 @@ function drawResultScreen(){
   text("press ENTER to play again", width / 2, 350);
 
 }
-
+// keyPressed for enter
 function keyPressed(){
 if (gameState === "start" && keyCode === ENTER){
   startQuiz();
 }
-else if (gameState === "results"){
+else if (gameState === "results" && keyCode === ENTER){
   startQuiz();
 }
 
 }
-
+// function so the quiz can start
 function startQuiz(){
   removeAnswerButtons();
 
@@ -210,16 +210,16 @@ function startQuiz(){
 
   createAnswerButtons();
 }
-
+// function to make buttons
 function createAnswerButtons(){
   removeAnswerButtons();
 
   let q = questionShuffle[currentQuestion];
-
+// for loop for button positions
   for (let i = 0; i < q.answers.length; i++) {
     let answer = q.answers[i];
 
-    let button = createAnswerButton(answer);
+    let button = createButton(answer);
 
     if(i === 0){
       button.position(50,350);
@@ -238,25 +238,33 @@ function createAnswerButtons(){
     }
 
     button.size(330,70);
-
+// interact mouse with button
     button.mousePressed(function(){
-      checkAnswer(answer);
+
+      checkAnswer(i);
     });
 
     answerButtons.push(button);
     
   }
 }
-
-function checkAnswer(){
+// function to check if answers are correct if yes increase score by one
+function checkAnswer(answer){
   let q = questionShuffle[currentQuestion];
   
   if (answer === q.correct){
-    score++;
-  }
-nextQuestion();
-}
 
+    score++;
+
+  }
+
+nextQuestion();
+
+console.log("click answer", answer);
+    console.log("correct answer", q.correct);
+    console.log("score check", score);
+}
+// function to go to the next question if current question has been answered
 function nextQuestion(){
   currentQuestion++;
 
@@ -269,7 +277,7 @@ function nextQuestion(){
     createAnswerButtons();
   }
 }
-
+// and a function for the music
 function changeSound(newSound){
 if(currentSound){
   currentSound.stop();
@@ -281,7 +289,7 @@ if(currentSound){
   currentSound.loop();
 }
 }
-
+// function to remove buttons that do not have the answers of the current question
 function removeAnswerButtons(){
   for (let button of answerButtons){
     button.remove();
